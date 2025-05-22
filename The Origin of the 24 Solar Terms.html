@@ -1,125 +1,367 @@
 <!doctype html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>二十四节气的起源 - 深度解读</title>
-    <link href="BlogPostAssets/styles/blogPostStyle.css" rel="stylesheet" type="text/css">
-    <!-- 引入 Adobe Edge Web Fonts -->
-    <script>var __adobewebfontsappname__ = "dreamweaver"</script>
-    <script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
+    <title>二十四节气的起源 | 中国二十四节气文化</title>
+    <style>
+        /* 浅蓝色和黄色配色方案 */
+        :root {
+            --primary-blue: #3498db;       /* 主蓝色 */
+            --light-blue: #eaf2f8;         /* 浅蓝色背景 */
+            --dark-blue: #2c3e50;          /* 深蓝色 */
+            --accent-yellow: #f1c40f;      /* 强调黄色 */
+            --warm-yellow: #f39c12;        /* 暖黄色 */
+            --text-dark: #34495e;          /* 深色文本 */
+            --text-light: #7f8c8d;         /* 浅色文本 */
+            --white: #ffffff;              /* 白色 */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-blue);
+            background-image: linear-gradient(to bottom, #eaf2f8, #d4e6f1);
+        }
+        
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--accent-yellow);
+            margin-bottom: 30px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-yellow);
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-yellow);
+            background-color: rgba(241, 196, 15, 0.1);
+        }
+        
+        /* 主要内容区域 */
+        main {
+            padding: 40px 0;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 文章卡片样式 */
+        .article-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 35px;
+            border-top: 4px solid var(--accent-yellow);
+        }
+        
+        /* 标题样式 */
+        .article-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .article-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .article-header h1:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-yellow);
+        }
+        
+        .article-header h2 {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+        
+        /* 内容样式 */
+        .article-content h3 {
+            color: var(--dark-blue);
+            font-size: 1.6rem;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+        
+        .article-content h4 {
+            color: var(--warm-yellow);
+            font-size: 1.3rem;
+            margin: 25px 0 15px;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        .article-content strong {
+            color: var(--dark-blue);
+        }
+        
+        /* 图片样式 */
+        .term-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent-yellow);
+            transition: transform 0.3s;
+        }
+        
+        .term-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .sidebar-card {
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            padding: 25px;
+            border-top: 4px solid var(--accent-yellow);
+        }
+        
+        .sidebar-card h3 {
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+        
+        .sidebar-card p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        /* 相关链接 */
+        .related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .related-links a {
+            display: block;
+            padding: 12px 20px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .related-links a:hover {
+            background-color: var(--accent-yellow);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(241, 196, 15, 0.3);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 3px solid var(--accent-yellow);
+        }
+        
+        footer p {
+            font-size: 1.1rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-card, .sidebar-card {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <div id="mainwrapper">
-        <!-- 网页头部 -->
-        <header>
-            <div id="logo">
-                <!-- 公司名称 -->
-                Apple&nbsp; Kevin Brayden Joanna
-            </div>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">二十四节气文化</a>
             <nav>
-                <a href="#" title="导航链接 1">Nav1</a>
-                <a href="#" title="导航链接 2">Nav2</a>
-                <a href="#" title="导航链接 3">Nav3</a>
+                <a href="index.html" title="节气介绍">节气介绍</a>
+                <a href="The Origin of the 24 Solar Terms.html" title="节气起源">节气起源</a>
+                <a href="Customs and Climate of Winter Solstice and Beginning of Spring.html" title="气候特征">气候特征</a>
+                <a href="MBTI .html" title="MBTI">MBTI</a>
             </nav>
-        </header>
-
-        <!-- 网页内容 -->
-        <div id="content">
-            <!-- 搜索框，仅在移动和平板布局显示 -->
-            <div class="notOnDesktop">
-                <input type="text" placeholder="搜索">
-            </div>
-
-            <!-- 主内容区域 -->
-            <section id="mainContent">
-                <h1>二十四节气的起源</h1>
-                <h1>The origin of the Twenty-Four Solar Terms</h1>
-                <h3>
-                    二十四节气发源于中国古代，是华夏先民凭借对太阳周年运动的细致观察，洞悉一年中时令、气候、物候等方面的变化规律而形成的知识体系与社会实践。早在春秋战国时期，古代贤哲就依据太阳在黄道上的位置来确定节气。至秦汉时期，二十四节气已基本确立，并逐步成为指导农业生产和日常生活的重要准则。它彰显了中国古代人民对自然规律的深刻认知与尊崇，是中华民族传统文化的璀璨瑰宝，对中国乃至全球的农业、气象、文化等领域均产生了深远影响。
-                </h3>
-                <p>
-                    The Twenty - Four Solar Terms originated in ancient China. It is a knowledge system and social practice developed by the ancient Chinese through meticulous observation of the sun's annual motion and understanding of the changing laws of seasons, climates, and phenologies throughout the year. As early as the Spring and Autumn and Warring States periods, ancient sages began to determine the solar terms based on the sun's position on the ecliptic. By the Qin and Han dynasties, the Twenty - Four Solar Terms had been basically established and gradually became an important guide for agricultural production and daily life. It reflects the profound understanding and respect for the laws of nature by the ancient Chinese people. It is a precious gem of traditional Chinese culture and has had a profound impact on the agricultural, meteorological, cultural and other fields in China and even around the world.
-                </p>
-                <img src="0b331230cbf915442534bcfb369b7434.jpeg" width="700" alt="二十四节气相关图片">
-
-                <!-- 二十四节气的分类依据 -->
-                <h2>二十四节气的分类依据</h2>
-                <p>
-                    二十四节气的分类主要依据太阳在黄道上的位置，同时兼顾气候变化、物候现象等因素。具体情况如下：
-                    The classification of the Twenty - Four Solar Terms is mainly based on the sun's position on the ecliptic, while also taking into account factors such as climate change and phenological phenomena. The details are as follows:
-                </p>
-                <p>
-                    <strong>天文因素</strong>：地球绕太阳公转的轨道被称为黄道，太阳在黄道上的位置不断变动。古人将黄道划分为 360 度，以春分点为 0 度，每 15 度设定为一个节气，如此便形成了二十四节气。例如，当太阳到达黄经 0 度时为春分，到达黄经 30 度时为清明，依此类推。这清晰地体现了季节的更替以及太阳高度角的变化，精准反映了天文季节的特征。
-                    <strong>Astronomical factors</strong>: The orbit of the Earth's revolution around the Sun is called the ecliptic, and the sun's position on the ecliptic is constantly changing. The ancients divided the ecliptic into 360 degrees, with the vernal equinox point as 0 degrees, and each 15 degrees as a solar term, thus forming the Twenty - Four Solar Terms. For example, when the Sun reaches 0 degrees of ecliptic longitude, it is the Spring Equinox, and when it reaches 30 degrees of ecliptic longitude, it is Qingming, and so on. This clearly reflects the change of seasons and the variation of the solar altitude angle, accurately demonstrating the characteristics of astronomical seasons.
-                </p>
-                <p>
-                    <strong>气候因素</strong>：每个节气都对应着特定的气候特点。比如，立春、立夏、立秋、立冬分别标志着春、夏、秋、冬四季的起始，气温随之逐渐变化；小暑、大暑、处暑等节气与炎热天气紧密相关，反映了气温的高低和变化趋势；而小寒、大寒则是一年中最为寒冷的时段，体现了寒冷程度的差异。
-                    <strong>Climatic factors</strong>: Each solar term corresponds to specific climatic characteristics. For instance, the Beginning of Spring, the Beginning of Summer, the Beginning of Autumn, and the Beginning of Winter respectively mark the start of spring, summer, autumn, and winter, and the temperature gradually changes. Solar terms such as Minor Heat, Major Heat, and End of Heat are closely related to hot weather, reflecting the level and changing trend of temperature. While Minor Cold and Major Cold are the coldest periods of the year, reflecting the difference in the degree of coldness.
-                </p>
-                <p>
-                    <strong>物候因素</strong>：物候指的是动植物等随着气候变化而产生的相应变化。二十四节气也依据物候现象进行了细致分类。例如，惊蛰标志着春雷初响，唤醒了蛰伏在土中冬眠的动物；谷雨时节，降雨量增多，谷类作物得以茁壮成长；芒种意味着有芒的麦子即将收割，有芒的稻子可以播种，充分反映了农作物的生长规律和农事活动的节奏。
-                    <strong>Phenological factors</strong>: Phenology refers to the corresponding changes of animals, plants, etc. with the change of climate. The Twenty - Four Solar Terms are also carefully classified according to phenological phenomena. For example, Jingzhe (the Waking of Insects) marks the beginning of the spring thunder, which wakes up the hibernating animals in the soil. Guyu (Grain Rain) indicates that at this time, the rainfall increases, and cereal crops can thrive. Mangzhong (Grain in Ear) means that the wheat with awns should be harvested soon, and the rice with awns can be planted, fully reflecting the growth of crops and the rhythm of agricultural activities.
-                </p>
-                <img src="b0c6bce75deca507215d49231b97c548.jpeg" width="500" height="700" alt="二十四节气物候图片">
-            </section>
-
-            <!-- 侧边栏 -->
-            <section id="sidebar">
-                <article>
-                    <h3>关于二十四节气的诗歌</h3>
-                    <p>
-                        春雨惊春清谷天，夏满芒夏暑相连。
-                        秋处露秋寒霜降，冬雪雪冬小大寒。
-                        每月两节不变更，最多相差一两天。
-                        上半年来六廿一，下半年是八廿三。
-                    </p>
-                    <p>
-                        Spring showers startle spring, Pure Brightness and Grain Rain.
-                        Summer Solstice, Grain Full, Grain in Ear, and summer heats remain.
-                        Autumn Equinox, Limit of Heat, Dews, Cold Dew, Frost's Descent.
-                        Winter Solstice, Snow, Minor Snow, Major Cold, Minor Cold's extent.
-                        Two solar terms each month, they always stay the same,
-                        With a difference of at most one or two days, not to blame.
-                        In the first half of the year, it's around the 6th and 21st,
-                        In the second half, the 8th and 23rd are the dates we learn.
-                    </p>
-                    <p>
-                        年去年来白发新，匆匆马上又逢春。
-                        关河底事空留客？岁月无情不贷人。
-                        一寸丹心图报国，两行清泪为思亲。
-                        孤怀激烈难消遣，漫把金盘簇五辛。
-                    </p>
-                    <p>
-                        As years pass by, new white hairs appear,
-                        In a hurry on horseback, spring comes once more here.
-                        Why do the mountains and rivers keep me here in vain?
-                        Time is ruthless and shows no mercy to mortal men.
-                        With a loyal heart, I long to serve the state,
-                        Two lines of clear tears stream down for missing my dear ones' fate.
-                        My solitary feelings are so intense, hard to dispel,
-                        I casually arrange five pungent vegetables on a golden plate as well.
-                    </p>
-                    <p>
-                        清明时节雨纷纷，路上行人欲断魂。
-                        借问酒家何处有？牧童遥指杏花村。
-                    </p>
-                </article>
-              <p> <a href="index.html">二十四节气介绍</a> </p>
-            <a href="Customs and Climate of Winter Solstice and Beginning of Spring.html">二十四节气的气候和习俗</a>
-				<br/><a href="MBTI .html">二十四节气和MBTI</a>
-			
-                <p>&nbsp;</p>
-            </section>
         </div>
-
-        <!-- 网页底部 -->
-        <footer>
-            <!-- 可添加版权信息等 -->
-        </footer>
-    </div>
+    </header>
+    
+    <main class="container">
+        <article class="article-card">
+            <div class="article-header">
+                <h1>二十四节气的起源</h1>
+                <h2>The Origin of the Twenty-Four Solar Terms</h2>
+            </div>
+            
+            <div class="article-content">
+                <p>二十四节气发源于中国古代，是华夏先民凭借对太阳周年运动的细致观察，洞悉一年中时令、气候、物候等方面的变化规律而形成的知识体系与社会实践。早在春秋战国时期，古代贤哲就依据太阳在黄道上的位置来确定节气。至秦汉时期，二十四节气已基本确立，并逐步成为指导农业生产和日常生活的重要准则。它彰显了中国古代人民对自然规律的深刻认知与尊崇，是中华民族传统文化的璀璨瑰宝，对中国乃至全球的农业、气象、文化等领域均产生了深远影响。</p>
+                
+                <p>The Twenty-Four Solar Terms originated in ancient China. It is a knowledge system and social practice developed by the ancient Chinese through meticulous observation of the sun's annual motion and understanding of the changing laws of seasons, climates, and phenologies throughout the year. As early as the Spring and Autumn and Warring States periods, ancient sages began to determine the solar terms based on the sun's position on the ecliptic. By the Qin and Han dynasties, the Twenty-Four Solar Terms had been basically established and gradually became an important guide for agricultural production and daily life. It reflects the profound understanding and respect for the laws of nature by the ancient Chinese people. It is a precious gem of traditional Chinese culture and has had a profound impact on the agricultural, meteorological, cultural and other fields in China and even around the world.</p>
+                
+                <img src="0b331230cbf915442534bcfb369b7434.jpeg" alt="二十四节气相关图片" class="term-image">
+                
+                <h3>二十四节气的分类依据</h3>
+                <p>二十四节气的分类主要依据太阳在黄道上的位置，同时兼顾气候变化、物候现象等因素。具体情况如下：</p>
+                <p>The classification of the Twenty-Four Solar Terms is mainly based on the sun's position on the ecliptic, while also taking into account factors such as climate change and phenological phenomena. The details are as follows:</p>
+                
+                <h4>天文因素</h4>
+                <p>地球绕太阳公转的轨道被称为黄道，太阳在黄道上的位置不断变动。古人将黄道划分为 360 度，以春分点为 0 度，每 15 度设定为一个节气，如此便形成了二十四节气。例如，当太阳到达黄经 0 度时为春分，到达黄经 30 度时为清明，依此类推。这清晰地体现了季节的更替以及太阳高度角的变化，精准反映了天文季节的特征。</p>
+                <p><strong>Astronomical factors</strong>: The orbit of the Earth's revolution around the Sun is called the ecliptic, and the sun's position on the ecliptic is constantly changing. The ancients divided the ecliptic into 360 degrees, with the vernal equinox point as 0 degrees, and each 15 degrees as a solar term, thus forming the Twenty-Four Solar Terms. For example, when the Sun reaches 0 degrees of ecliptic longitude, it is the Spring Equinox, and when it reaches 30 degrees of ecliptic longitude, it is Qingming, and so on. This clearly reflects the change of seasons and the variation of the solar altitude angle, accurately demonstrating the characteristics of astronomical seasons.</p>
+                
+                <h4>气候因素</h4>
+                <p>每个节气都对应着特定的气候特点。比如，立春、立夏、立秋、立冬分别标志着春、夏、秋、冬四季的起始，气温随之逐渐变化；小暑、大暑、处暑等节气与炎热天气紧密相关，反映了气温的高低和变化趋势；而小寒、大寒则是一年中最为寒冷的时段，体现了寒冷程度的差异。</p>
+                <p><strong>Climatic factors</strong>: Each solar term corresponds to specific climatic characteristics. For instance, the Beginning of Spring, the Beginning of Summer, the Beginning of Autumn, and the Beginning of Winter respectively mark the start of spring, summer, autumn, and winter, and the temperature gradually changes. Solar terms such as Minor Heat, Major Heat, and End of Heat are closely related to hot weather, reflecting the level and changing trend of temperature. While Minor Cold and Major Cold are the coldest periods of the year, reflecting the difference in the degree of coldness.</p>
+                
+                <h4>物候因素</h4>
+                <p>物候指的是动植物等随着气候变化而产生的相应变化。二十四节气也依据物候现象进行了细致分类。例如，惊蛰标志着春雷初响，唤醒了蛰伏在土中冬眠的动物；谷雨时节，降雨量增多，谷类作物得以茁壮成长；芒种意味着有芒的麦子即将收割，有芒的稻子可以播种，充分反映了农作物的生长规律和农事活动的节奏。</p>
+                <p><strong>Phenological factors</strong>: Phenology refers to the corresponding changes of animals, plants, etc. with the change of climate. The Twenty-Four Solar Terms are also carefully classified according to phenological phenomena. For example, Jingzhe (the Waking of Insects) marks the beginning of the spring thunder, which wakes up the hibernating animals in the soil. Guyu (Grain Rain) indicates that at this time, the rainfall increases, and cereal crops can thrive. Mangzhong (Grain in Ear) means that the wheat with awns should be harvested soon, and the rice with awns can be planted, fully reflecting the growth of crops and the rhythm of agricultural activities.</p>
+                
+                <img src="b0c6bce75deca507215d49231b97c548.jpeg" alt="二十四节气物候图片" class="term-image">
+            </div>
+        </article>
+        
+        <aside class="sidebar">
+            <div class="sidebar-card">
+                <h3>关于二十四节气的诗歌</h3>
+                <p>春雨惊春清谷天，夏满芒夏暑相连。</p>
+                <p>秋处露秋寒霜降，冬雪雪冬小大寒。</p>
+                <p>每月两节不变更，最多相差一两天。</p>
+                <p>上半年来六廿一，下半年是八廿三。</p>
+                
+                <p>Spring showers startle spring, Pure Brightness and Grain Rain.</p>
+                <p>Summer Solstice, Grain Full, Grain in Ear, and summer heats remain.</p>
+                <p>Autumn Equinox, Limit of Heat, Dews, Cold Dew, Frost's Descent.</p>
+                <p>Winter Solstice, Snow, Minor Snow, Major Cold, Minor Cold's extent.</p>
+                <p>Two solar terms each month, they always stay the same,</p>
+                <p>With a difference of at most one or two days, not to blame.</p>
+                <p>In the first half of the year, it's around the 6th and 21st,</p>
+                <p>In the second half, the 8th and 23rd are the dates we learn.</p>
+                
+                <p>年去年来白发新，匆匆马上又逢春。</p>
+                <p>关河底事空留客？岁月无情不贷人。</p>
+                <p>一寸丹心图报国，两行清泪为思亲。</p>
+                <p>孤怀激烈难消遣，漫把金盘簇五辛。</p>
+                
+                <p>As years pass by, new white hairs appear,</p>
+                <p>In a hurry on horseback, spring comes once more here.</p>
+                <p>Why do the mountains and rivers keep me here in vain?</p>
+                <p>Time is ruthless and shows no mercy to mortal men.</p>
+                <p>With a loyal heart, I long to serve the state,</p>
+                <p>Two lines of clear tears stream down for missing my dear ones' fate.</p>
+                <p>My solitary feelings are so intense, hard to dispel,</p>
+                <p>I casually arrange five pungent vegetables on a golden plate as well.</p>
+                
+                <p>清明时节雨纷纷，路上行人欲断魂。</p>
+                <p>借问酒家何处有？牧童遥指杏花村。</p>
+            </div>
+            
+            <div class="sidebar-card">
+                <h3>相关链接</h3>
+                <div class="related-links">
+                    <a href="index.html">二十四节气介绍</a>
+                    <a href="Customs and Climate of Winter Solstice and Beginning of Spring.html">二十四节气的气候和习俗</a>
+                    <a href="MBTI .html">二十四节气和MBTI</a>
+                </div>
+            </div>
+        </aside>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 中国二十四节气文化网 | 传承中华传统文化</p>
+        </div>
+    </footer>
 </body>
-
 </html>
