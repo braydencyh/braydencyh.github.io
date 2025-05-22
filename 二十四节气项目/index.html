@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国二十四节气 - 立春与冬至</title>
+    <style>
+        /* 更新配色方案 - 浅蓝色配黄色 */
+        :root {
+            --primary-color: #3498db; /* 主蓝色 */
+            --secondary-color: #f1c40f; /* 亮黄色 */
+            --accent-color: #e74c3c; /* 保留原强调色 */
+            --light-color: #ecf0f1; /* 浅灰色 */
+            --dark-color: #2c3e50; /* 深蓝色 */
+            --text-color: #34495e; /* 深蓝灰色 */
+            --text-light: #7f8c8d; /* 浅灰色 */
+            --warm-yellow: #f39c12; /* 暖黄色 */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #eaf2f8; /* 更浅的蓝色背景 */
+            background-image: linear-gradient(to bottom, #eaf2f8, #d4e6f1); /* 添加渐变背景 */
+        }
+        
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 - 使用深蓝配黄色 */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--secondary-color); /* 添加黄色边框 */
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color); /* 黄色logo */
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(241, 196, 15, 0.1); /* 黄色半透明背景 */
+        }
+        
+        /* 主要内容 */
+        main {
+            padding: 40px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--secondary-color); /* 黄色边框 */
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 节气卡片 - 更新样式 */
+        .solar-term {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-top: 3px solid var(--secondary-color); /* 黄色顶部边框 */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .solar-term:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .solar-term h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .solar-term h3 {
+            color: var(--warm-yellow); /* 使用暖黄色 */
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+        
+        .term-image-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .term-image {
+            max-width: 80%; /* 调整图片宽度 */
+            height: auto;
+            max-height: 400px; /* 限制最大高度 */
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--secondary-color); /* 添加黄色边框 */
+            transition: transform 0.3s;
+        }
+        
+        .term-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* 页脚 - 使用深蓝配黄色 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 3px solid var(--secondary-color);
+        }
+        
+        /* 相关链接 - 更新按钮样式 */
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .related-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .related-links a:hover {
+            background-color: var(--warm-yellow);
+            color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--warm-yellow);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .solar-term {
+                padding: 20px;
+            }
+            
+            .term-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">二十四节气文化</a>
+            <nav>
+                <a href="#" title="节气介绍">节气介绍</a>
+                <a href="#" title="习俗文化">习俗文化</a>
+                <a href="#" title="气候特征">气候特征</a>
+                <a href="#" title="关于我们">关于我们</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="hero">
+            <h1>中国二十四节气——立春与冬至</h1>
+            <p>The 24 Solar Terms of China —— Start of Spring and Winter Solstice</p>
+        </section>
+        
+        <article class="solar-term">
+            <h2>二十四节气概述</h2>
+            <p>Overview of the 24 Solar Terms</p>
+            
+            <p><strong>二十四节气</strong>是中国传统文化的重要组成部分，生动地反映了季节、气候和物候的变化规律。其中，<strong>立春和冬至</strong>意义非凡。</p>
+            <p><strong>The 24 solar terms</strong>, an important part of China's traditional culture, vividly reflect the changing rules of seasons, climate, and phenology. Among them, <strong>Start of Spring and Winter Solstice</strong> hold special significance.</p>
+            
+            <div class="term-image-container">
+                <img src="立春图片.jpeg" alt="立春景象" class="term-image">
+            </div>
+        </article>
+        
+        <article class="solar-term">
+            <h2>立春 Start of Spring</h2>
+            <p>The first solar term among the 24 solar terms</p>
+            
+            <p><strong>立春</strong>是二十四节气中的第一个节气，标志着春季的开始。此时，天气逐渐转暖，东风解冻，蛰虫始振，万物开始复苏。</p>
+            <p><strong>Start of Spring</strong> is the first solar term among the 24 solar terms, marking the beginning of spring. At this time, the weather gradually gets warmer. The east wind thaws the ice, hibernating insects start to stir, and all things begin to recover.</p>
+            
+            <h3>立春习俗 Customs</h3>
+            <p>在立春时节，人们有迎春、咬春等习俗，<strong>迎春</strong>是为了迎接春天的到来，表达对新一年的美好期望；<strong>咬春</strong>则通常会吃春饼、萝卜等食物，寓意着迎接春天的生机与活力。</p>
+            <p>During the Start of Spring, people have customs such as welcoming spring and biting spring. Welcoming spring is to greet the arrival of spring and express good expectations for the new year. When biting spring, people usually eat spring cakes, radishes and other foods, implying the embrace of the vitality and energy of spring.</p>
+        </article>
+        
+        <article class="solar-term">
+            <h2>冬至 Winter Solstice</h2>
+            <p>The 22nd solar term among the 24 solar terms</p>
+            
+            <p><strong>冬至</strong>是二十四节气中第二十二个节气，拉开寒冬的深邃序幕。这时，白昼最短、黑夜最长，此后阳光渐长。北方冷风凛冽，南方湿寒入骨，万物在严寒中潜藏。</p>
+            <p><strong>The Winter Solstice</strong> is the 22nd solar term among the twenty-four solar terms, marking the profound beginning of the cold winter. At this time, the daytime is the shortest and the nighttime is the longest, and after that, the duration of sunlight gradually increases. In the north, the cold wind blows fiercely, while in the south, the damp cold pierces to the bone, and all things lie dormant in the severe cold.</p>
+            
+            <div class="term-image-container">
+                <img src="冬至图片.jpg" alt="冬至景象" class="term-image">
+            </div>
+            
+            <h3>冬至习俗 Customs</h3>
+            <p>在冬至时节，人们有祭祖、吃特色食物等习俗。<strong>祭祖</strong>是为了缅怀先辈，寄托对先人的追思与敬意；<strong>北方吃饺子</strong>，避免 "冻耳朵"，<strong>南方吃汤圆</strong>，寓意团圆美满，这些习俗承载着对温暖、安康的期盼。</p>
+            <p>During the Winter Solstice, people have customs such as ancestor worship and eating special foods. <strong>Ancestor worship</strong> is to commemorate ancestors and express remembrance and respect for them. <strong>In the north, people eat dumplings</strong> to avoid "frozen ears", while <strong>in the south, people eat tangyuan</strong>, symbolizing reunion and happiness. These customs carry people's expectations for warmth and well-being.</p>
+            
+            <div class="related-links">
+                <a href="The Origin of the 24 Solar Terms.html">二十四节气的起源</a>
+                <a href="Customs and Climate of Winter Solstice and Beginning of Spring.html">二十四节气的气候和习俗</a>
+                <a href="MBTI .html">二十四节气和MBTI的关系</a>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 中国二十四节气文化网 | 传承中华传统文化</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    
+    <script>
+        // 返回顶部按钮显示/隐藏
+        window.addEventListener('scroll', function() {
+            var backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
