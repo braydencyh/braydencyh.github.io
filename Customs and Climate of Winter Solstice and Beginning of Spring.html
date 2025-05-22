@@ -1,71 +1,346 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BlogPost template by Adobe Dreamweaver</title>
-<link href="BlogPostAssets/styles/blogPostStyle.css" rel="stylesheet" type="text/css">
-<!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国二十四节气 - 立春与冬至的习俗与气候</title>
+    <style>
+        /* 全局样式 */
+        :root {
+            --primary-color: #2c7873;
+            --secondary-color: #6fb98f;
+            --accent-color: #e74c3c;
+            --light-color: #f4f9f4;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+        
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* 主要内容 */
+        main {
+            padding: 40px 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* 节气卡片 */
+        .solar-term {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .solar-term h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .solar-term h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+        }
+        
+        .term-image-container {
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .term-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* 习俗列表 */
+        .custom-item {
+            margin-bottom: 20px;
+        }
+        
+        .custom-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        /* 相关链接 */
+        .related-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .related-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .related-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        /* 返回顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .solar-term {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<div id="mainwrapper">
-<header> 
-    <!--**************************************************************************
-    Header starts here. It contains Logo and 3 navigation links. 
-    ****************************************************************************-->
-    <div id="logo">
-      <!-- <img src="logoImage.png" alt="sample logo"> -->
-      <!-- Company Logo text -->
-      Apple Kevin Joanna Brayden&nbsp;</div>
-    <nav> <a href="#" title="Link">Nav1</a> <a href="#" title="Link">Nav2</a><a href="#" title="Link">Nav3</a> </nav>
-  </header>
-  <div id="content">
-<div class="notOnDesktop"> 
-      <!-- This search box is displayed only in mobile and tablet laouts and not in desktop layouts -->
-      <input type="text" placeholder="Search">
-    </div>
-<section id="mainContent"> 
-      <!--************************************************************************
-    Main Blog content starts here
-    ****************************************************************************-->
-      <h1>
-        <!-- Blog title -->
-        中国二十四节气——立春，冬至的习俗与气候</h1>
-      <p>The customs and climate of the Beginning of Spring and the Winter Solstice, two of the Twenty-four Solar Terms in China. &nbsp;</p>
-<p>&nbsp;</p>
-<h1>&nbsp;</h1>
-<h2><em><strong>
-  <!-- Tagline -->
-立春的习俗与气候The customs and climate of the Beginning of Spring</strong></em></h2>
-<h3><strong>立春的气候（Climate of the Beginning of Spring）</strong></h3>
-<p>立春是二十四节气中的第一个节气，标志着春季的开始。此时，虽然北半球的日照时间逐渐增长，气温也开始缓慢回升，但冷空气活动仍较为频繁，天气乍暖还寒，呈现出冷暖交替的特点。在北方，大地尚未完全解冻，仍然比较寒冷，有时还会有降雪天气；而在南方，气温回升相对较快，空气湿度逐渐增加，早有春的气息，一些地区可能已经开始出现春雷和春雨。
-  The Beginning of Spring is the first solar term among the twenty - four solar terms, marking the beginning of spring. At this time, although the sunshine hours in the northern hemisphere gradually increase and the temperature also begins to rise slowly, the cold air activities are still relatively frequent, and the weather is still changeable, showing the characteristics of alternating cold and warm. In the north, the ground has not completely thawed and it is still quite cold, and there may still be snowfall sometimes. In the south, the temperature rises relatively fast, the air humidity gradually increases, and there is already the breath of spring. In some areas, the spring thunder and spring rain may have already appeared.</p>
-<h3><strong>立春的习俗（Customs of the Beginning of Spring）</strong></h3>
-<p><strong>迎春</strong>：这是立春最重要的习俗之一。人们会举行盛大的迎春仪式，迎接春天的到来。在古代，皇帝会率领文武百官到东郊去祭祀迎春，祈求风调雨顺、五谷丰登。民间也会组织各种迎春活动，如舞龙、舞狮、踩高跷等，以表达对春天的期盼和喜悦之情。
-  Spring Welcoming: This is one of the most important customs of the Beginning of Spring. People will hold grand spring - welcoming ceremonies to welcome the arrival of spring. In ancient times, the emperor would lead all the civil and military officials to the eastern suburbs to offer sacrifices to welcome spring, praying for favorable weather and a bumper harvest. Various spring - welcoming activities will also be organized among the people, such as dragon dances, lion dances, stilt - walking, etc., to express the anticipation and joy for spring.</p>
-<p><strong>咬春</strong>：立春时，人们会吃一些新鲜的蔬菜和水果，如萝卜、春饼、春卷等，谓之 “咬春”。吃萝卜据说可以解春困，而春饼和春卷则象征着迎接春天的美好寓意。这些食物不仅美味可口，还具有一定的养生保健作用。
-Spring Biting: At the Beginning of Spring, people will eat some fresh vegetables and fruits, such as radishes, spring cakes, spring rolls, etc., which is called "Spring Biting". Eating radishes is said to relieve spring fatigue, while spring cakes and spring rolls symbolize the beautiful meaning of welcoming spring. These foods are not only delicious but also have certain health - care effects.</p>
-<p><strong>打春牛</strong>：这是一种古老的习俗，寓意着鞭策耕牛，辛勤劳作，迎接丰收。人们会用彩鞭鞭打用泥土塑成的春牛，或制作纸牛，然后将其打破，象征着驱走寒气，迎接春天的到来。有些地方还会将春牛肚子里的五谷杂粮分发给百姓，寓意着五谷丰登。
-Spring Ox - Beating: This is an ancient custom, which implies urging the farm cattle to work hard and welcome the harvest. People will whip the clay - made spring ox with colorful whips, or make paper oxen and then break them, symbolizing driving away the cold air and welcoming the arrival of spring. In some places, the grains and miscellaneous grains in the belly of the spring ox will be distributed to the people, implying a bumper grain harvest.</p>
-<img src="e7839b80c3c616a85dfc0737bb008c44.jpeg" width="1000" height="800" alt=""/>
-<h2><em>冬至的气候和习俗Climate of the Winter Solstice</em></h2>
-<h3><strong>冬至的气候（Climate of the Winter Solstice）</strong></h3>
-<p><strong>吃饺子</strong>：这是冬至最具代表性的习俗之一。在北方地区，家家户户在冬至这天都会包饺子吃。相传医圣张仲景在冬至返乡时，看到百姓耳朵被冻伤，便用羊肉和驱寒药材包成饺子形状的“娇耳”给百姓吃，治好了他们的耳朵。此后，冬至吃饺子以防止耳朵被冻的习俗便流传开来。如今，饺子的馅料丰富多样，一家人围坐在一起包饺子、吃饺子，充满了温馨的节日氛围。
-Eating Dumplings: This is one of the most representative customs of the Winter Solstice. In northern regions, every household makes and eats dumplings on this day. It is said that Zhang Zhongjing, a famous doctor in ancient times, saw people's ears frostbitten when he returned to his hometown on the Winter Solstice. He made dumplings filled with mutton and cold - dispelling herbs, which he called "Jiao'er", to treat the people's ears. Since then, the custom of eating dumplings on the Winter Solstice to prevent ears from getting frostbitten has been passed down. Nowadays, dumplings come in a wide variety of fillings. Families sit together to make and eat dumplings, creating a warm and festive atmosphere.</p>
-<p><strong>吃汤圆</strong>：在南方，冬至吃汤圆是一项重要的传统。汤圆，又称“冬至团”，“圆”有“团圆”“圆满”之意。冬至吃汤圆，象征着家庭团圆、生活美满。人们会精心制作各种口味的汤圆，有芝麻馅、豆沙馅等，不仅口感软糯香甜，更寄托了人们对美好生活的向往和祝福。
-Eating Tangyuan: In the south, eating tangyuan on the Winter Solstice is an important tradition. Tangyuan, also known as "Winter Solstice Balls", and the character "yuan" means "reunion" and "perfection". Eating tangyuan on the Winter Solstice symbolizes family reunion and a happy life. People carefully make tangyuan of various flavors, such as sesame - filled and red - bean - paste - filled ones. They are not only soft, glutinous and sweet in taste but also express people's yearning for and blessings on a better life.</p>
-<p><strong>祭天祭祖</strong>：冬至是阴阳二气自然转化的时刻，被视为上天赐予的福泽。在古代，冬至这天皇帝会前往郊外举行盛大的祭天大典，祈求来年风调雨顺、国泰民安。而民间百姓则会在家中向祖先牌位祭拜，缅怀先人，祈求祖先庇佑家族平安、子孙兴旺。这一习俗体现了人们对天地自然的敬畏以及对家族传承的重视。
-Offering Sacrifices to Heaven and Ancestors: The Winter Solstice is a time when the yin and yang qi naturally transform, which is regarded as a blessing from heaven. In ancient times, the emperor would go to the outskirts to hold a grand ceremony to offer sacrifices to heaven, praying for favorable weather and national peace in the coming year. Among the common people, they would offer sacrifices to the memorial tablets of their ancestors at home, remembering the deceased and praying for the ancestors' protection of the family's safety and the prosperity of future generations. This custom reflects people's respect for nature and the importance they attach to family inheritance.</p>
-<img src="338dc7fcfe8edbbbd24cd6188945ada8.jpeg" width="1000" height="500" alt=""/>
-<br/><a href="index.html">总体介绍</a><br/>
-<a href="二十四节气的起源.html">二十四节气的起源.html</a>
-
-</article>
-</footer>
-  </div>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">二十四节气文化</a>
+            <nav>
+                <a href="#" title="节气介绍">节气介绍</a>
+                <a href="#" title="习俗文化">习俗文化</a>
+                <a href="#" title="气候特征">气候特征</a>
+                <a href="#" title="关于我们">关于我们</a>
+            </nav>
+        </div>
+    </header>
     
-</div>
+    <main class="container">
+        <section class="hero">
+            <h1>中国二十四节气——立春与冬至的习俗与气候</h1>
+            <p>The customs and climate of the Beginning of Spring and the Winter Solstice, two of the Twenty-four Solar Terms in China.</p>
+        </section>
+        
+        <article class="solar-term">
+            <h2>立春的习俗与气候</h2>
+            <p>The customs and climate of the Beginning of Spring</p>
+            
+            <h3>立春的气候</h3>
+            <p>立春是二十四节气中的第一个节气，标志着春季的开始。此时，虽然北半球的日照时间逐渐增长，气温也开始缓慢回升，但冷空气活动仍较为频繁，天气乍暖还寒，呈现出冷暖交替的特点。在北方，大地尚未完全解冻，仍然比较寒冷，有时还会有降雪天气；而在南方，气温回升相对较快，空气湿度逐渐增加，早有春的气息，一些地区可能已经开始出现春雷和春雨。</p>
+            <p>The Beginning of Spring is the first solar term among the twenty-four solar terms, marking the beginning of spring. At this time, although the sunshine hours in the northern hemisphere gradually increase and the temperature also begins to rise slowly, the cold air activities are still relatively frequent, and the weather is still changeable, showing the characteristics of alternating cold and warm. In the north, the ground has not completely thawed and it is still quite cold, and there may still be snowfall sometimes. In the south, the temperature rises relatively fast, the air humidity gradually increases, and there is already the breath of spring. In some areas, the spring thunder and spring rain may have already appeared.</p>
+            
+            <div class="term-image-container">
+                <img src="e7839b80c3c616a85dfc0737bb008c44.jpeg" alt="立春景象" class="term-image">
+            </div>
+            
+            <h3>立春的习俗</h3>
+            
+            <div class="custom-item">
+                <strong>迎春 Spring Welcoming</strong>
+                <p>这是立春最重要的习俗之一。人们会举行盛大的迎春仪式，迎接春天的到来。在古代，皇帝会率领文武百官到东郊去祭祀迎春，祈求风调雨顺、五谷丰登。民间也会组织各种迎春活动，如舞龙、舞狮、踩高跷等，以表达对春天的期盼和喜悦之情。</p>
+                <p>This is one of the most important customs of the Beginning of Spring. People will hold grand spring-welcoming ceremonies to welcome the arrival of spring. In ancient times, the emperor would lead all the civil and military officials to the eastern suburbs to offer sacrifices to welcome spring, praying for favorable weather and a bumper harvest. Various spring-welcoming activities will also be organized among the people, such as dragon dances, lion dances, stilt-walking, etc., to express the anticipation and joy for spring.</p>
+            </div>
+            
+            <div class="custom-item">
+                <strong>咬春 Spring Biting</strong>
+                <p>立春时，人们会吃一些新鲜的蔬菜和水果，如萝卜、春饼、春卷等，谓之"咬春"。吃萝卜据说可以解春困，而春饼和春卷则象征着迎接春天的美好寓意。这些食物不仅美味可口，还具有一定的养生保健作用。</p>
+                <p>At the Beginning of Spring, people will eat some fresh vegetables and fruits, such as radishes, spring cakes, spring rolls, etc., which is called "Spring Biting". Eating radishes is said to relieve spring fatigue, while spring cakes and spring rolls symbolize the beautiful meaning of welcoming spring. These foods are not only delicious but also have certain health-care effects.</p>
+            </div>
+            
+            <div class="custom-item">
+                <strong>打春牛 Spring Ox-Beating</strong>
+                <p>这是一种古老的习俗，寓意着鞭策耕牛，辛勤劳作，迎接丰收。人们会用彩鞭鞭打用泥土塑成的春牛，或制作纸牛，然后将其打破，象征着驱走寒气，迎接春天的到来。有些地方还会将春牛肚子里的五谷杂粮分发给百姓，寓意着五谷丰登。</p>
+                <p>This is an ancient custom, which implies urging the farm cattle to work hard and welcome the harvest. People will whip the clay-made spring ox with colorful whips, or make paper oxen and then break them, symbolizing driving away the cold air and welcoming the arrival of spring. In some places, the grains and miscellaneous grains in the belly of the spring ox will be distributed to the people, implying a bumper grain harvest.</p>
+            </div>
+        </article>
+        
+        <article class="solar-term">
+            <h2>冬至的气候和习俗</h2>
+            <p>Climate and customs of the Winter Solstice</p>
+            
+            <h3>冬至的气候</h3>
+            <p>冬至是中国农历中最重要的节气之一，也是北半球一年中白昼最短、黑夜最长的一天。冬至过后，白昼逐渐变长，阳气开始回升。冬至期间，中国大部分地区进入最寒冷的时期，北方地区常有强冷空气南下，带来大风降温天气；南方地区虽然相对温暖，但也会出现明显的降温过程。</p>
+            <p>The Winter Solstice is one of the most important solar terms in the Chinese lunar calendar, and it is also the day with the shortest daytime and the longest night in the northern hemisphere. After the Winter Solstice, the daytime gradually becomes longer, and the yang qi begins to rise. During the Winter Solstice, most parts of China enter the coldest period. In the northern regions, strong cold air often moves southward, bringing strong winds and temperature drops. Although the southern regions are relatively warm, there will also be obvious cooling processes.</p>
+            
+            <div class="term-image-container">
+                <img src="338dc7fcfe8edbbbd24cd6188945ada8.jpeg" alt="冬至景象" class="term-image">
+            </div>
+            
+            <h3>冬至的习俗</h3>
+            
+            <div class="custom-item">
+                <strong>吃饺子 Eating Dumplings</strong>
+                <p>这是冬至最具代表性的习俗之一。在北方地区，家家户户在冬至这天都会包饺子吃。相传医圣张仲景在冬至返乡时，看到百姓耳朵被冻伤，便用羊肉和驱寒药材包成饺子形状的"娇耳"给百姓吃，治好了他们的耳朵。此后，冬至吃饺子以防止耳朵被冻的习俗便流传开来。如今，饺子的馅料丰富多样，一家人围坐在一起包饺子、吃饺子，充满了温馨的节日氛围。</p>
+                <p>This is one of the most representative customs of the Winter Solstice. In northern regions, every household makes and eats dumplings on this day. It is said that Zhang Zhongjing, a famous doctor in ancient times, saw people's ears frostbitten when he returned to his hometown on the Winter Solstice. He made dumplings filled with mutton and cold-dispelling herbs, which he called "Jiao'er", to treat the people's ears. Since then, the custom of eating dumplings on the Winter Solstice to prevent ears from getting frostbitten has been passed down. Nowadays, dumplings come in a wide variety of fillings. Families sit together to make and eat dumplings, creating a warm and festive atmosphere.</p>
+            </div>
+            
+            <div class="custom-item">
+                <strong>吃汤圆 Eating Tangyuan</strong>
+                <p>在南方，冬至吃汤圆是一项重要的传统。汤圆，又称"冬至团"，"圆"有"团圆""圆满"之意。冬至吃汤圆，象征着家庭团圆、生活美满。人们会精心制作各种口味的汤圆，有芝麻馅、豆沙馅等，不仅口感软糯香甜，更寄托了人们对美好生活的向往和祝福。</p>
+                <p>In the south, eating tangyuan on the Winter Solstice is an important tradition. Tangyuan, also known as "Winter Solstice Balls", and the character "yuan" means "reunion" and "perfection". Eating tangyuan on the Winter Solstice symbolizes family reunion and a happy life. People carefully make tangyuan of various flavors, such as sesame-filled and red-bean-paste-filled ones. They are not only soft, glutinous and sweet in taste but also express people's yearning for and blessings on a better life.</p>
+            </div>
+            
+            <div class="custom-item">
+                <strong>祭天祭祖 Offering Sacrifices to Heaven and Ancestors</strong>
+                <p>冬至是阴阳二气自然转化的时刻，被视为上天赐予的福泽。在古代，冬至这天皇帝会前往郊外举行盛大的祭天大典，祈求来年风调雨顺、国泰民安。而民间百姓则会在家中向祖先牌位祭拜，缅怀先人，祈求祖先庇佑家族平安、子孙兴旺。这一习俗体现了人们对天地自然的敬畏以及对家族传承的重视。</p>
+                <p>The Winter Solstice is a time when the yin and yang qi naturally transform, which is regarded as a blessing from heaven. In ancient times, the emperor would go to the outskirts to hold a grand ceremony to offer sacrifices to heaven, praying for favorable weather and national peace in the coming year. Among the common people, they would offer sacrifices to the memorial tablets of their ancestors at home, remembering the deceased and praying for the ancestors' protection of the family's safety and the prosperity of future generations. This custom reflects people's respect for nature and the importance they attach to family inheritance.</p>
+            </div>
+            
+            <div class="related-links">
+                <a href="index.html">二十四节气的介绍</a>
+                <a href="The Origin of the 24 Solar Terms.html">二十四节气的起源</a>
+                <a href="MBTI .html">二十四节气和MBTI的关系</a>
+            </div>
+        </article>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 中国二十四节气文化网 | 传承中华传统文化</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    
+    <script>
+        // 返回顶部按钮显示/隐藏
+        window.addEventListener('scroll', function() {
+            var backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
